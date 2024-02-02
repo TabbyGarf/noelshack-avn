@@ -149,44 +149,6 @@ function addNoelshackButton() {
         noelshackDropzone.style.display = 'none'; // Initially hide noelshack-dropzone
         noelshackDropzone.innerHTML = 'Deposez une image ici <u>ou cliquez ici';
 
-        // Create URL input
-        const urlInput = document.createElement('input');
-        urlInput.type = 'text';
-        urlInput.placeholder = 'Entrez l\'URL de l\'image';
-        urlInput.style.width = '70%';
-        urlInput.style.color = '#660000';
-        urlInput.style.border = '1px solid #dd0000';
-        urlInput.style.backgroundColor = '#0005';
-        // Create button for URL upload
-        const urlUploadButton = document.createElement('button');
-        urlUploadButton.type = 'button';
-        urlUploadButton.style.backgroundColor ='#dd0000';
-        urlUploadButton.style.color = 'white';
-        urlUploadButton.style.border = '1px solid #dd0000';
-        urlUploadButton.textContent = 'Envoyer';
-        urlUploadButton.style.width = '30%';
-
-        // Add event listener to the button for handling URL upload
-        urlUploadButton.addEventListener('click', function (event) {
-            const imageUrl = urlInput.value.trim();
-            if (imageUrl !== '') {
-                event.stopPropagation();
-                uploadToNoelshack(imageUrl, event); // Pass the event to the function
-                urlInput.value = ''; // Clear the input after processing
-            } else {
-                alert('Veuillez entrer une URL valide.');
-                event.stopPropagation();
-            }
-        });
-
-        // Add event listener to prevent file explorer from opening when clicking URL input
-        urlInput.addEventListener('click', function (event) {
-            event.stopPropagation();
-        });
-
-        // Append URL input to Noelshack dropzone
-        noelshackDropzone.appendChild(urlInput);
-        noelshackDropzone.appendChild(urlUploadButton);
         // Create file input for click handling
         const fileInput = document.createElement('input');
         fileInput.type = 'file';
